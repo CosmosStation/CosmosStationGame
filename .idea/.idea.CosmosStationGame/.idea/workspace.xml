@@ -12,6 +12,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Globals.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -19,6 +20,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Globals.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteraction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Player.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="27CUDOdOZHuBV0XPajUvNv77hhy" />
@@ -70,6 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1648823445944</updated>
       <workItem from="1648823448843" duration="1998000" />
+      <workItem from="1648877972442" duration="3106000" />
     </task>
     <servers />
   </component>
