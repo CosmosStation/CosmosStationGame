@@ -1,41 +1,79 @@
 using UnityEngine;
 
-public class PlayerInteraction : MonoBehaviour
+public class PickUp : MonoBehaviour
 {
-    private float distance = 3;
-    [SerializeField] Transform pos;
-    private Rigidbody rigidBody;
-    private Globals param;
+    [SerializeField] int GRABI;
+    [SerializeField] float grabPower = 10f;
+    [SerializeField] float throwingSpeed = 10f;
+    [SerializeField] float rayDistance = 2f;
+
+    private bool Grab;
+    private bool Throw;
+    public Transform offset;
+    [SerializeField] Camera camera;
+    RaycastHit hit;
+
 
     private void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
-        param = GameObject.Find("First person controller").GetComponent<Globals>();
+        GRABI = 0;
     }
 
-    private void OnMouseDown()
+    void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, distance) && param.take == false)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            rigidBody.isKinematic = true;
-            param.take = true;
-            rigidBody.MovePosition(pos.position);
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(ray, out hit, rayDistance);
+            if (hit.rigidbody)
+            {
+                GRABI += 1;
+                switch (GRABI)
+                {
+                    case 1:
+                        Grab = true;
+                        break;
+                    case 2:
+                        Grab = false;
+                        break;
+                }
+
+                if (GRABI == 3 || Grab == false)
+                {
+                    GRABI = 0;
+                }
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0) && Grab)
+        {
+            GRABI = 0;
+            Grab = false;
+            Throw = true;
+        }
+
+
+        if (Grab && hit.rigidbody)
+        {
+            hit.rigidbody.velocity = (offset.position - (hit.transform.position + hit.rigidbody.centerOfMass)) *
+                                     grabPower;
+        }
+
+        if (Throw && hit.rigidbody)
+        {
+            //ф-ция толчка
+            hit.rigidbody.velocity = camera.ScreenPointToRay(Input.mousePosition).direction * throwingSpeed;
+            Throw = false;
         }
     }
 
-    private void FixedUpdate()
+    private void Grabb()
     {
-        if (rigidBody.isKinematic)
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Physics.Raycast(ray, out hit, rayDistance);
+        if (hit.rigidbody)
         {
-            gameObject.transform.position = pos.position;
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                param.take = false;
-                rigidBody.useGravity = true;
-                rigidBody.isKinematic = false;
-                rigidBody.AddForce(Camera.main.transform.forward * 500);
-            }
+            Grab = true;
         }
     }
 }
