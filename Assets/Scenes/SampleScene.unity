@@ -156,14 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d828295d17be144a8d8298adb3ed86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GRABI: 0
-  grabPower: 10
-  throwingSpeed: 10
-  RayDistance: 2
-  Grab: 0
-  Throw: 0
-  offset: {fileID: 1262385159}
-  camera: {fileID: 963194227}
 --- !u!54 &26754807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -629,11 +621,35 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 839809271}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 78261a88-ed12-49aa-b751-b4f8b40353b2
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 839809271}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Look
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 265ac62f-5c74-4b67-b04f-ec315d57d63d
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
