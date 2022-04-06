@@ -73,4 +73,9 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(new Vector3(hor, 0, ver));
     }
+
+    void Move()
+    {
+        
+    }
 }

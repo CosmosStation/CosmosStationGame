@@ -17,8 +17,8 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/Player/Interaction.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Globals.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerInteraction.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="27CUDOdOZHuBV0XPajUvNv77hhy" />
@@ -70,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1648823445944</updated>
       <workItem from="1648823448843" duration="1998000" />
-      <workItem from="1649177787884" duration="2007000" />
+      <workItem from="1649177787884" duration="3416000" />
     </task>
     <servers />
   </component>
