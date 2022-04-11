@@ -7,11 +7,11 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] float throwingSpeed = 10f; //velocity of force
     [SerializeField] float RayDistance = 5f; //distance
 
-    private bool Grab = false;
+    private bool Grabbing = false;
     private bool Throw = false;
     public Transform offset;
     [SerializeField] Camera camera;
-    RaycastHit hit; //луч
+    RaycastHit hit;
 
 
     private void Start()
@@ -31,10 +31,10 @@ public class PlayerInteraction : MonoBehaviour
         //         switch (GRABI)
         //         {
         //             case 1:
-        //                 Grab = true;
+        //                 Grabbing = true;
         //                 break;
         //             case 2:
-        //                 Grab = false;
+        //                 Grabbing = false;
         //                 break;
         //         }
         //
@@ -48,7 +48,7 @@ public class PlayerInteraction : MonoBehaviour
         // if (Input.GetMouseButtonDown(0) && Grab)
         // {
         //     GRABI = 0;
-        //     Grab = false;
+        //     Grabbbing = false;
         //     Throw = true;
         // }
         //
@@ -67,13 +67,18 @@ public class PlayerInteraction : MonoBehaviour
         // }
     }
 
-    private void Grabb()
+    private void DoGrab()
     {
         // Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         // Physics.Raycast(ray, out hit, RayDistance);
         // if (hit.rigidbody)
         // {
-        //     Grab = true;
+        //     Grabbing = true;
         // }
+    }
+
+    public void Talk()
+    {
+        
     }
 }
