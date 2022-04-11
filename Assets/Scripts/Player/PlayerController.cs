@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,13 +12,16 @@ public class PlayerController : MonoBehaviour
 
     bool isGround;
 
-    float currentSpeed = 6, jumpspeed = 100, senssensitivity = 5;
+    float currentSpeed = 6, jumpspeed = 100, sensetivity = 0.5f;
 
     [SerializeField] float runSpeed = 15, stepSpeed = 5, normalSpeed = 10;
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         startingRotation = transform.rotation;
+        ver = 0.0f;
+        hor = 0.0f;
     }
 
     void OnCollisionStay(Collision other)
@@ -37,7 +41,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         // if (Input.GetKey(KeyCode.LeftShift))
         // {
@@ -52,35 +56,54 @@ public class PlayerController : MonoBehaviour
         //     currentSpeed = normalSpeed;
         // }
         //
-        // rothor += Input.GetAxis("Mouse X") * senssensitivity;
-        // rotver += Input.GetAxis("Mouse Y") * senssensitivity;
+        // rothor += Input.GetAxis("Mouse X") * sensetivity;
+        // rotver += Input.GetAxis("Mouse Y") * sensetivity;
         //
-        // rotver = Mathf.Clamp(rotver, -60, 60);
+        
+        
         //
-        // Quaternion rotY = Quaternion.AngleAxis(rothor, Vector3.up);
-        // Quaternion rotX = Quaternion.AngleAxis(-rotver, Vector3.right);
+        if (isGround)
+        {
+            // ver = Input.GetAxis("Vertical") * Time.deltaTime * currentSpeed;
+            // hor = Input.GetAxis("Horizontal") * Time.deltaTime * currentSpeed;
+            // jump = Input.GetAxis("Jump") * Time.deltaTime * jumpspeed;
+        
+            // GetComponent<Rigidbody>().AddForce(transform.up * jump, ForceMode.Impulse);
+        }
         //
-        // cam.transform.rotation = startingRotation * transform.rotation * rotX;
-        // transform.rotation = startingRotation * rotY;
-        //
-        // if (isGround)
-        // {
-        //     ver = Input.GetAxis("Vertical") * Time.deltaTime * currentSpeed;
-        //     hor = Input.GetAxis("Horizontal") * Time.deltaTime * currentSpeed;
-        //     jump = Input.GetAxis("Jump") * Time.deltaTime * jumpspeed;
-        //
-        //     GetComponent<Rigidbody>().AddForce(transform.up * jump, ForceMode.Impulse);
-        // }
-        //
-        // transform.Translate(new Vector3(hor, 0, ver));
+        transform.Translate(new Vector3(hor, 0, ver));
+    }
+
+    private void Update()
+    {
+        Quaternion rotY = Quaternion.AngleAxis(rothor, Vector3.up);
+        Quaternion rotX = Quaternion.AngleAxis(-rotver, Vector3.right);
+        
+        cam.transform.rotation = startingRotation * transform.rotation * rotX;
+        transform.rotation = startingRotation * rotY;
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
+        Vector2 v = context.ReadValue<Vector2>();
+        hor = v.x * 0.1f;
+        ver = v.y * 0.1f;
+        Debug.Log(v);
     }
 
     public void Look(InputAction.CallbackContext context)
+    {
+        Vector2 v = context.ReadValue<Vector2>();
+
+        rothor += v.x * sensetivity;
+        rotver += v.y * sensetivity;
+        
+        rotver = Mathf.Clamp(rotver, -60, 60);
+        
+        Debug.Log(v);
+    }
+
+    public void Use(InputAction.CallbackContext context)
     {
         Debug.Log(context);
     }
