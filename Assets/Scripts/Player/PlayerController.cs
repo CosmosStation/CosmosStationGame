@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     bool isGround;
 
-    float currentSpeed = 6, jumpspeed = 100, sensetivity = 0.5f;
+    float currentSpeed = 0.1f, jumpspeed = 100, sensetivity = 0.5f;
 
     [SerializeField] float runSpeed = 15, stepSpeed = 5, normalSpeed = 10;
 
@@ -55,22 +55,12 @@ public class PlayerController : MonoBehaviour
         // {
         //     currentSpeed = normalSpeed;
         // }
-        //
-        // rothor += Input.GetAxis("Mouse X") * sensetivity;
-        // rotver += Input.GetAxis("Mouse Y") * sensetivity;
-        //
-        
-        
-        //
         if (isGround)
         {
-            // ver = Input.GetAxis("Vertical") * Time.deltaTime * currentSpeed;
-            // hor = Input.GetAxis("Horizontal") * Time.deltaTime * currentSpeed;
             // jump = Input.GetAxis("Jump") * Time.deltaTime * jumpspeed;
         
             // GetComponent<Rigidbody>().AddForce(transform.up * jump, ForceMode.Impulse);
         }
-        //
         transform.Translate(new Vector3(hor, 0, ver));
     }
 
@@ -86,8 +76,8 @@ public class PlayerController : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         Vector2 v = context.ReadValue<Vector2>();
-        hor = v.x * 0.1f;
-        ver = v.y * 0.1f;
+        hor = v.x * currentSpeed;
+        ver = v.y * currentSpeed;
         Debug.Log(v);
     }
 
