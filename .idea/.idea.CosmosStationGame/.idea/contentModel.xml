@@ -1563,6 +1563,14 @@
             <e p="PlayerInteraction.cs" t="Include" />
           </e>
         </e>
+        <e p="SpaceSkies Free" t="Include">
+          <e p="Demo" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="LookCamera.cs" t="Include" />
+              <e p="SkyboxChanger.cs" t="Include" />
+            </e>
+          </e>
+        </e>
       </e>
       <e p="CosmosStationGame.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
