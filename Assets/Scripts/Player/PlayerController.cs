@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log(v);
     }
 
-    public void Use(InputAction.CallbackContext context)
+    public void Interact(InputAction.CallbackContext context)
     {
         Debug.Log(context);
     }
