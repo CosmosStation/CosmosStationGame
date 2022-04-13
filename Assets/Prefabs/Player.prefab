@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2736177336917108745}
   - component: {fileID: 2736177336917108748}
   - component: {fileID: 2736177336917108739}
-  - component: {fileID: 2736177336917108746}
   - component: {fileID: 2736177336917108747}
   - component: {fileID: 2736177336917109237}
   - component: {fileID: 2736177336917109236}
@@ -137,24 +136,6 @@ MonoBehaviour:
   runSpeed: 15
   stepSpeed: 5
   normalSpeed: 10
---- !u!114 &2736177336917108746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2736177336917108738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61bca4e4522c4ff4da6e22cb497ce539, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GRABI: 0
-  grabPower: 10
-  throwingSpeed: 10
-  RayDistance: 2
-  offset: {fileID: 0}
-  camera: {fileID: 2736177337061899655}
 --- !u!114 &2736177336917108747
 MonoBehaviour:
   m_ObjectHideFlags: 0

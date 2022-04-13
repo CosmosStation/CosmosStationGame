@@ -1,4 +1,5 @@
 using System;
+using PixelCrushers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         startingRotation = transform.rotation;
         ver = 0.0f;
