@@ -2,6 +2,7 @@ using System;
 using PixelCrushers;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,9 +14,35 @@ public class PlayerController : MonoBehaviour
 
     bool isGround;
 
-    float currentSpeed = 0.1f, jumpspeed = 100, sensetivity = 0.5f;
+    [Header("MOVEMENT PARAMETERS")] 
+    [SerializeField] float currentSpeed = 0.1f;
+    [SerializeField] float jumpspeed = 100, sensetivity = 0.01f, runSpeed = 15, stepSpeed = 5, normalSpeed = 10;
+    
+    [Header("INTERACTION PARAMETERS")]
+    public LayerMask layerMaskInteract;
+    public Image interactiveCursor;
+    
+    private RaycastHit currentHit;
 
-    [SerializeField] float runSpeed = 15, stepSpeed = 5, normalSpeed = 10;
+    [SerializeField]
+    private float interactRange = 30f;
+    private bool isReadyToInteract = false;
+
+    [Header("PICKUP PARAMETERS")] 
+    [SerializeField] private Transform holdArea;
+
+    [SerializeField] private float pickupRange = 5.0f;
+    [SerializeField] private float pickupForce = 150.0f;
+    
+    
+    private GameObject heldObj;
+    private Rigidbody heldObjRB;
+    
+    
+    // Story related flags
+    private bool isSitting;
+    [Header("STORY PARAMETERS")]
+    public bool isAbleToStand;
 
     void Start()
     {
@@ -45,6 +72,27 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+
+        RaycastHit hit;
+
+        Transform cameraTransform = GetComponentInChildren<Camera>().transform;
+        
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, interactRange, layerMaskInteract.value))
+        {
+            Debug.DrawRay(cameraTransform.position, cameraTransform.forward * hit.distance, Color.green);
+            // Debug.Log("Ray hit");
+            currentHit = hit;
+            interactiveCursor.color = Color.green;
+            isReadyToInteract = true;
+        }
+        else
+        {
+            Debug.DrawRay(cameraTransform.position, cameraTransform.forward * interactRange, Color.red);
+            // Debug.Log("Ray did not hit");
+            interactiveCursor.color = Color.white;
+            isReadyToInteract = false;
+        }
+        
         // if (Input.GetKey(KeyCode.LeftShift))
         // {
         //     currentSpeed = runSpeed;
@@ -73,6 +121,11 @@ public class PlayerController : MonoBehaviour
         
         cam.transform.rotation = startingRotation * transform.rotation * rotX;
         transform.rotation = startingRotation * rotY;
+
+        if (heldObj)
+        {
+            MoveObject();
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -80,7 +133,7 @@ public class PlayerController : MonoBehaviour
         Vector2 v = context.ReadValue<Vector2>();
         hor = v.x * currentSpeed;
         ver = v.y * currentSpeed;
-        Debug.Log(v);
+        // Debug.Log(v);
     }
 
     public void Look(InputAction.CallbackContext context)
@@ -92,11 +145,58 @@ public class PlayerController : MonoBehaviour
         
         rotver = Mathf.Clamp(rotver, -60, 60);
         
-        Debug.Log(v);
+        // Debug.Log(v);
     }
 
     public void Interact(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
+        if (!isReadyToInteract || context.phase != InputActionPhase.Performed) return;
+        Debug.Log(currentHit);
+
+        if (heldObj == null)
+        {
+            switch (currentHit.transform.tag)
+            {
+                case "PickableItem":
+                    Debug.Log("Picked up");
+                
+                    heldObj = currentHit.transform.gameObject;
+                    heldObjRB = currentHit.rigidbody;
+
+                    heldObjRB.useGravity = false;
+                    heldObjRB.drag = 10;
+                    heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
+
+                    heldObjRB.transform.parent = holdArea;
+                    break;
+                case "ButtonItem":
+                    Debug.Log("Button pressed");
+
+                    GameObject gameObj = currentHit.transform.gameObject;
+                    ButtonItem buttonItm = gameObj.GetComponent<ButtonItem>();
+                    buttonItm.pressButton();
+                    
+                    break;
+            }
+        }
+        else
+        {
+            heldObjRB.useGravity = true;
+            heldObjRB.drag = 1;
+            heldObjRB.constraints = RigidbodyConstraints.None;
+
+            heldObjRB.transform.parent = null;
+            heldObjRB = currentHit.rigidbody;
+            heldObj = null;
+        }
+    }
+
+    void MoveObject()
+    {
+        if (Vector3.Distance(heldObj.transform.position, holdArea.position) > 0.1f)
+        {
+            Vector3 moveDirection = holdArea.position - heldObj.transform.position;
+            heldObjRB.AddForce(moveDirection * pickupForce);
+        }
     }
 }
