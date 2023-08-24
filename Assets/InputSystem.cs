@@ -15,10 +15,10 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public partial class @InputClass: IInputActionCollection2, IDisposable
+public partial class @InputSystem: IInputActionCollection2, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @InputClass()
+    public @InputSystem()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""InputSystem"",
@@ -941,8 +941,8 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Fire;
     public struct PlayerActions
     {
-        private @InputClass m_Wrapper;
-        public PlayerActions(@InputClass wrapper) { m_Wrapper = wrapper; }
+        private @InputSystem m_Wrapper;
+        public PlayerActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
@@ -1010,8 +1010,8 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     public struct UIActions
     {
-        private @InputClass m_Wrapper;
-        public UIActions(@InputClass wrapper) { m_Wrapper = wrapper; }
+        private @InputSystem m_Wrapper;
+        public UIActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;

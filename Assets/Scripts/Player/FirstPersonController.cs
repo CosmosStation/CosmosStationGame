@@ -1,8 +1,9 @@
 using FMODUnity;
 using PixelCrushers.DialogueSystem.UnityGUI; // use it
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
-#endif
+// #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+using UnityEngine.InputSystem;
+// #endif
 
 namespace Player
 {
@@ -84,9 +85,9 @@ namespace Player
 
 
 
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+// #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		private PlayerInput _playerInput;
-#endif
+// #endif
 		private CharacterController _controller;
 		private InputHandler _input;
 		private GameObject _mainCamera;
@@ -97,11 +98,11 @@ namespace Player
 		{
 			get
 			{
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+//#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 				return _playerInput.currentControlScheme == "KeyboardMouse";
-#else
-				return false;
-#endif
+//#else
+//				return false;
+//#endif
 			}
 		}
 
@@ -120,11 +121,11 @@ namespace Player
 			_input = GetComponent<InputHandler>();
 			_cinemachineStandPosition = CinemachineCameraTarget.transform.position;
 			_colliderStandHeight = _controller.height;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+//#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 			_playerInput = GetComponent<PlayerInput>();
-#else
-			Debug.LogError("Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
-#endif
+//#else
+//			Debug.LogError("Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
+//#endif
 
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;

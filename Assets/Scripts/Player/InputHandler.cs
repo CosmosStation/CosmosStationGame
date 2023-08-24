@@ -1,7 +1,7 @@
 using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+//#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
-#endif
+//#endif
 
 namespace Player
 {
@@ -28,7 +28,8 @@ namespace Player
 
 		[Header("Interaction")] public InteractionController interaction;
 
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+
+//#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
@@ -56,11 +57,6 @@ namespace Player
 		{
 			CrouchInput(value.isPressed);
 		}
-
-		public void OnLight(InputValue value)
-		{
-			LightInput(value.isPressed);
-		}
 		
 		public void OnInteract(InputValue value)
 		{
@@ -76,18 +72,14 @@ namespace Player
 		{
 			AltActionInput(value.isPressed);
 		}
-
-		public void OnOpenInventory(InputValue value)
-        {
-			OpenInventoryInput(value.isPressed);
-        }
-#endif
+	
+//#endif
 
 
 		private void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
-		} 
+		}
 
 		private void LookInput(Vector2 newLookDirection)
 		{
@@ -98,23 +90,23 @@ namespace Player
 		{
 			jump = newJumpState;
 		}
-		
+
 		private void InteractInput(bool newInteractState)
 		{
 			Debug.Log(newInteractState);
 			interact = newInteractState;
 		}
-		
+
 		private void ActionInput(bool newActionState)
 		{
 			interact = newActionState;
 		}
-		
+
 		private void AltActionInput(bool newAltActionState)
 		{
 			interact = newAltActionState;
 		}
-		
+
 
 		private void SprintInput(bool newSprintState)
 		{
@@ -136,5 +128,5 @@ namespace Player
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
-	
+
 }
