@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 using Interactables;
 
@@ -8,10 +6,6 @@ namespace Player
     public class InteractionController : MonoBehaviour
     {
         #region delcarations
-        [Header("OUTSIDE INFLUENCE")] [SerializeField]
-        private GrabMethods monsterGrabManager;
-
-        private bool _isGrabbed = false;
 
         [Header("INTERACTION PARAMETERS")] public LayerMask layerMaskInteract;
         [SerializeField] HandUI hand;
@@ -25,16 +19,6 @@ namespace Player
         private InputHandler _input;
         private RaycastHit _currentHit;
         private bool _isReadyToInteract = false;
-
-        private AbsorbItem _absorbItem;
-
-        // private ChangeColorItem _changeColorItem;
-        private ItemPickUp _pickUpItem;
-        private InspectableItem _inspectableItem;
-        private List<Tween> _tweens;
-        private GameObject _objectHeld;
-        private bool _isObjectHeld;
-        private bool _tryPickupObject;
 
         public float LookSpeedMultiply { get; private set; } = 1;
         #endregion
@@ -52,13 +36,6 @@ namespace Player
                 _handRect.position = new Vector3(Screen.width / 2, Screen.height / 2);
             }
 
-            GameEvents.current.onPlayerGrabbed += onGrabbed;
-        }
-
-        void onGrabbed()
-        {
-            Debug.Log("Player Grabbed");
-            _isGrabbed = true;
         }
 
         void FixedUpdate()

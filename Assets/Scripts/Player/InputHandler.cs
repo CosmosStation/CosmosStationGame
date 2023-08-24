@@ -28,8 +28,6 @@ namespace Player
 
 		[Header("Interaction")] public InteractionController interaction;
 
-		[Header("Player Grabbed by Monster")] public GrabMethods grabMethods;
-
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
 		{
