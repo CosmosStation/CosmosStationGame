@@ -36,7 +36,8 @@ Transform:
   m_LocalPosition: {x: 6.15, y: 1.81, z: 5.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2669259718391663056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5355417629173147036
@@ -165,7 +166,7 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 64
-  CinemachineCameraTarget: {fileID: 0}
+  CinemachineCameraTarget: {fileID: 927749225017414011}
   TopClamp: 90
   BottomClamp: -90
   CrouchCameraPosition: 0.528
@@ -245,3 +246,34 @@ MonoBehaviour:
   action: 0
   altAction: 0
   interaction: {fileID: 8747447679935519145}
+--- !u!1 &927749225017414011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2669259718391663056}
+  m_Layer: 0
+  m_Name: PlayerCameraRoot
+  m_TagString: CinemachineTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2669259718391663056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927749225017414011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5353916257091383081}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
