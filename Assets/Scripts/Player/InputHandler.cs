@@ -28,8 +28,10 @@ namespace Player
 
 		[Header("Interaction")] public InteractionController interaction;
 
+		[Header("Inventory")] public InventoryController inventory;
 
-//#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+
+		//#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
@@ -72,8 +74,13 @@ namespace Player
 		{
 			AltActionInput(value.isPressed);
 		}
-	
-//#endif
+
+		public void OnOpenInventory(InputValue value)
+		{
+			OpenInventoryInput(value.isPressed);
+		}
+
+		//#endif
 
 
 		private void MoveInput(Vector2 newMoveDirection)
@@ -126,6 +133,12 @@ namespace Player
 		private void SetCursorState(bool newState)
 		{
 			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+		}
+
+		private void OpenInventoryInput(bool newOpenInventoryState)
+		{
+			openInventory = newOpenInventoryState;
+			inventory.OpenInventory();
 		}
 	}
 

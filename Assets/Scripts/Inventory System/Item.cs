@@ -11,7 +11,6 @@ public class Item : ScriptableObject
 
     public enum ItemType
     {
-        ChangeColorSyringe,
         Key
     }
 }
