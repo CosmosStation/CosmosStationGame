@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8286649754501114395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Capsule
+  m_EditorClassIdentifier: 
+  Path: event:/Capsule
+  Guid:
+    Data1: 1118003743
+    Data2: 1303335697
+    Data3: -842609476
+    Data4: -1462302987
+  Banks:
+  - {fileID: 5923132390975901624}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 720
 --- !u!114 &-5033476625855356557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18,6 +45,33 @@ MonoBehaviour:
     Data2: 1269592850
     Data3: -701328204
     Data4: 124895079
+  Banks:
+  - {fileID: 5923132390975901624}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &-4116617016008287775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Door
+  m_EditorClassIdentifier: 
+  Path: event:/Door
+  Guid:
+    Data1: -2075499195
+    Data2: 1114306671
+    Data3: 722791561
+    Data4: -1244508463
   Banks:
   - {fileID: 5923132390975901624}
   IsStream: 0
@@ -46,12 +100,14 @@ MonoBehaviour:
   - {fileID: -5033476625855356557}
   - {fileID: 1314054889011492575}
   - {fileID: 6009375746741607879}
+  - {fileID: -4116617016008287775}
+  - {fileID: -8286649754501114395}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5923132390975901624}
   StringsBanks:
   - {fileID: 8904985191719141277}
-  cacheTime: 638286068020982874
+  cacheTime: 638286074291530834
   cacheVersion: 131605
 --- !u!114 &1314054889011492575
 MonoBehaviour:
@@ -95,10 +151,10 @@ MonoBehaviour:
   Path: Assets/FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638286068020962882
+  lastModified: 638286074291510825
   FileSizes:
   - Name: Desktop
-    Value: 169856
+    Value: 196256
   Exists: 1
 --- !u!114 &6009375746741607879
 MonoBehaviour:
@@ -142,8 +198,8 @@ MonoBehaviour:
   Path: Assets/FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638286068020982874
+  lastModified: 638286074291530834
   FileSizes:
   - Name: Desktop
-    Value: 846
+    Value: 920
   Exists: 1
