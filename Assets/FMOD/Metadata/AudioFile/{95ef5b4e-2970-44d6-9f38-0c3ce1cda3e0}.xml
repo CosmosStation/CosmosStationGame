@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{95ef5b4e-2970-44d6-9f38-0c3ce1cda3e0}">
+		<property name="assetPath">
+			<value>portal_ambient_loop1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>11.0249996</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>4.6658503401360543</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d83206a4-620f-4656-800f-8b813eb44def}</destination>
+		</relationship>
+	</object>
+</objects>
