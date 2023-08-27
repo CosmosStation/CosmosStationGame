@@ -24,19 +24,19 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6952592730015754921}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.000015, y: -5, z: -0.000044822693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5687139536534266029}
   - {fileID: 605675022046331034}
-  - {fileID: 605675022046419806}
+  - {fileID: 5421353740115363607}
   - {fileID: 1470371477365727714}
   - {fileID: 264006248130665900}
   - {fileID: 4530460036677949841}
   - {fileID: 6284170353888506912}
-  - {fileID: 3246125301032262496}
+  - {fileID: 5203819256450995678}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7897506201042960645
@@ -545,7 +545,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7798bb23b7a935a45afbb430ce9debe1, type: 3}
---- !u!4 &605675022046419806 stripped
+--- !u!4 &5421353740115363607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 462712, guid: 7798bb23b7a935a45afbb430ce9debe1, type: 3}
   m_PrefabInstance: {fileID: 5421353740114905199}
@@ -696,18 +696,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5839897468597223647, guid: 1f51771a190fc874995b03b079580a52, type: 3}
       propertyPath: m_VersionIndex
-      value: 3344
+      value: 3347
       objectReference: {fileID: 0}
     - target: {fileID: 6592788728255136354, guid: 1f51771a190fc874995b03b079580a52, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593955718386264677, guid: 1f51771a190fc874995b03b079580a52, type: 3}
+      propertyPath: delay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593955718386264677, guid: 1f51771a190fc874995b03b079580a52, type: 3}
+      propertyPath: autoPlay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593955718386264677, guid: 1f51771a190fc874995b03b079580a52, type: 3}
+      propertyPath: onStart.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f51771a190fc874995b03b079580a52, type: 3}
---- !u!4 &3246125301032262496 stripped
+--- !u!4 &5203819256450995678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1428732507609767493, guid: 1f51771a190fc874995b03b079580a52, type: 3}
   m_PrefabInstance: {fileID: 6621503868540504987}
