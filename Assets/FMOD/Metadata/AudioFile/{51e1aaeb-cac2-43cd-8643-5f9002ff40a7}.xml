@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{51e1aaeb-cac2-43cd-8643-5f9002ff40a7}">
+		<property name="assetPath">
+			<value>futureshoes1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.71299319727891153</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d83206a4-620f-4656-800f-8b813eb44def}</destination>
+		</relationship>
+	</object>
+</objects>

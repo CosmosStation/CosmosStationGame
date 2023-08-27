@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ce479f92-8bfe-4aad-aca9-3102f7ed6184}">
+		<property name="assetPath">
+			<value>Floor_step0.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d83206a4-620f-4656-800f-8b813eb44def}</destination>
+		</relationship>
+	</object>
+</objects>
