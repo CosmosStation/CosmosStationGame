@@ -8,6 +8,7 @@ namespace Interactables
         [SerializeField] Transform _visualButton;
         [SerializeField] float _clickDistance = .1f;
         [SerializeField] bool _onlyOneSwitchOn, _startFromOn, _onlySwitchingOn;
+        [SerializeField] private Vector3 _pressDirection = new Vector3(0, 1, 0);
         
         bool _state;
         Vector3 _startPos; // => _visualButton.position; 
@@ -17,7 +18,7 @@ namespace Interactables
         {
             _state = _startFromOn;
             _startPos = _visualButton.localPosition;
-            _minPos = _visualButton.localPosition - new Vector3(0,1,0) * _clickDistance;
+            _minPos = _visualButton.localPosition - _pressDirection * _clickDistance;
             //_mainExecutor?.Execute(_state ? 1 : 0);
         }
 
