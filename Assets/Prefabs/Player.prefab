@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8747447679935519145}
   - component: {fileID: 7590108075370744329}
   - component: {fileID: 8725974717999164047}
+  - component: {fileID: 1000534070446157494}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -34,10 +35,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.15, y: 1.81, z: 5.61}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2669259718391663056}
+  - {fileID: 3114008250365845007}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5355417629173147036
@@ -154,7 +156,7 @@ MonoBehaviour:
   MoveSpeed: 10
   SprintSpeed: 20
   CrouchSpeed: 2
-  RotationSpeed: 1
+  RotationSpeed: 30
   SpeedChangeRate: 10
   JumpHeight: 1.2
   Gravity: -15
@@ -170,7 +172,7 @@ MonoBehaviour:
   TopClamp: 90
   BottomClamp: -90
   CrouchCameraPosition: 0.528
-  _footStepsSource: {fileID: 0}
+  _footStepsSource: {fileID: 2751470149560324026}
   _interaction: {fileID: 8747447679935519145}
   hidden: 0
 --- !u!114 &8747447679935519145
@@ -246,6 +248,22 @@ MonoBehaviour:
   action: 0
   altAction: 0
   interaction: {fileID: 8747447679935519145}
+  inventory: {fileID: 1000534070446157494}
+--- !u!114 &1000534070446157494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432328637143784892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 049ee93ba82e2da4fab9bec7ee40afa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PersonController: {fileID: 8893327811320270103}
+  InventoryManager: {fileID: 0}
+  _inventory: {fileID: 0}
 --- !u!1 &927749225017414011
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,9 +289,72 @@ Transform:
   m_GameObject: {fileID: 927749225017414011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.907, z: 0.254}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5353916257091383081}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8071048235779612127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3114008250365845007}
+  - component: {fileID: 2751470149560324026}
+  m_Layer: 0
+  m_Name: FootStepsAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3114008250365845007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8071048235779612127}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.69, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5353916257091383081}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2751470149560324026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8071048235779612127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -297716716
+      Data2: 1269592850
+      Data3: -701328204
+      Data4: 124895079
+    Path: event:/Footsteps
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
