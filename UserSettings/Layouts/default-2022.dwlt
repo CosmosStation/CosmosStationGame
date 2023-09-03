@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: ProBuilder
+  m_Title: Game
   m_RootView: {fileID: 3}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 184
+  controlID: 75
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -216,8 +216,8 @@ MonoBehaviour:
     y: 0
     width: 370
     height: 604
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -298,8 +298,8 @@ MonoBehaviour:
     y: 0
     width: 415
     height: 939
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -474,10 +474,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 14}
-      m_SelectedIDs: e0e1ffff
-      m_LastClickedID: -7712
-      m_ExpandedIDs: 9af7ffff9ef7ffff06fbffff
+      scrollPos: {x: 0, y: 126}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 42d7ffff14f7ffff18f7ffff06fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -883,9 +883,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -80.94314, y: -28.064419, z: 34.0925}
+    m_Target: {x: -52.01472, y: -34.105194, z: -15.791954}
     speed: 2
-    m_Value: {x: -80.94314, y: -28.064419, z: 34.0925}
+    m_Value: {x: -52.01472, y: -34.105194, z: -15.791954}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -926,18 +926,18 @@ MonoBehaviour:
         m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 1, y: 1}
+      m_Size: {x: 0.5, y: 0.5}
     m_ShowGrid: 1
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.3034492, y: 0.38256153, z: -0.13464026, w: -0.8622337}
+    m_Target: {x: 0.02354157, y: 0.90914893, z: -0.4125614, w: 0.051877555}
     speed: 2
-    m_Value: {x: -0.3021541, y: 0.38276124, z: -0.13406561, w: -0.8626838}
+    m_Value: {x: 0.023541521, y: 0.9091471, z: -0.41256055, w: 0.05187745}
   m_Size:
-    m_Target: 31.341412
+    m_Target: 45.867012
     speed: 2
-    m_Value: 29.991781
+    m_Value: 45.867012
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1075,7 +1075,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Rooms
+    - Assets/Models
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1083,16 +1083,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Rooms
+  - Assets/Models
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\ksenia\Documents\CosmosStationGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 74920000
-    m_LastClickedID: 37492
-    m_ExpandedIDs: 000000005490000056900000589000005a9000005c9000005e9000006090000000ca9a3b
+    m_SelectedIDs: 6e920000
+    m_LastClickedID: 37486
+    m_ExpandedIDs: 0000000066900000689000006a9000006c9000006e900000709000007290000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1120,7 +1120,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005490000056900000589000005a9000005c9000005e90000060900000
+    m_ExpandedIDs: 0000000066900000689000006a9000006c9000006e9000007090000072900000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1147,7 +1147,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300009e8b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
