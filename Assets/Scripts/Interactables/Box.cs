@@ -44,6 +44,8 @@ namespace Interactables
             {
                 _avoidTriggerFix = true;
             	_rb.isKinematic = false; // OnTriggerEnter() after this line! It is reason to use _avoidTriggerFix
+                _rb.drag = 4;
+                _rb.angularDrag = 4;
                 if (_mainExecutor != null) _mainExecutor.Execute(0);
             }
             _targetDistanceToCam = hit.distance;
@@ -52,6 +54,8 @@ namespace Interactables
         public override void InteractEnd()
         {
             base.InteractEnd();
+            _rb.drag = 1;
+            _rb.angularDrag = 1;
             _isMove = false;
         }
         
