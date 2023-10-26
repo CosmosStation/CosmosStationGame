@@ -17,6 +17,8 @@ namespace Player
 		public bool crouch;
 		public bool lightState;
 		public bool openInventory;
+		public bool action;
+		public bool altAction;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -24,8 +26,6 @@ namespace Player
 		[Header("Mouse Cursor Settings")]
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
-		public bool action;
-		public bool altAction;
 
 		[Header("Interaction")] public InteractionController interaction;
 

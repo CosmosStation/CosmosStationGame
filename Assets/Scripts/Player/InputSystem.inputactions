@@ -24,13 +24,13 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
-                    "type": "Button",
+                    "name": "Action",
+                    "type": "Value",
                     "id": "5f222904-9fa8-4616-bbd2-bf8d7bf10b2d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Interact",
@@ -233,7 +233,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Fire",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -244,7 +244,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,7 +255,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "Fire",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -266,7 +266,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Fire",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -277,7 +277,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Fire",
+                    "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

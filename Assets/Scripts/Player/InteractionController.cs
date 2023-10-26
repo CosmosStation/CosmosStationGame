@@ -43,7 +43,15 @@ namespace Player
 
         void FixedUpdate()
         {
-            if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _currentHit, interactRange, layerMaskInteract))
+            this.ManageInteractable();
+            this.ManageGrab();
+            this.ManageEquipedInteract();
+            this.drawDebug();
+        }
+    
+        private void ManageInteractable()
+        {
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _currentHit, interactRange, layerMaskInteract))
             {
                 var target = _currentHit.transform.GetComponent<InteractableObject>();
                 if (target)
@@ -91,13 +99,24 @@ namespace Player
                     }
                 }
             }
+        }
 
+        private void ManageGrab()
+        {
             if (_input.drop && equipedItem)
             {
                 equipedItem.InteractEnd();
                 equipedItem = null;
             }
+        }
 
+        private void ManageEquipedInteract()
+        {
+            if (_input.action)
+        }
+
+        private void drawDebug()
+        {
             if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _currentHit,
                     interactRange,
                     layerMaskInteract.value))
