@@ -15,12 +15,15 @@ namespace Player
         [SerializeField] int interactRange = 3;
         public enum HandMode { canUse, grab, door, button}
 
+        public float LookSpeedMultiply { get; private set; } = 1;
+
+        public InteractableObject equipedItem = null;
+        private bool isItemEquiped = false;
+        
         Camera _camera;
         private InputHandler _input;
         private RaycastHit _currentHit;
         private bool _isReadyToInteract = false;
-
-        public float LookSpeedMultiply { get; private set; } = 1;
         #endregion
 
         void Start()
@@ -50,32 +53,49 @@ namespace Player
 
                     if (_input.interact)
                     {
-                        Debug.Log("INTERACT");
-                        _interactable = target;
-                        _interactable.InteractStart(_currentHit);
-                        LookSpeedMultiply = _interactable.LookingSpeed;
+                        if (target.interactType.Equals("Equipable"))
+                        {
+                            if (equipedItem == null)
+                            {
+                                equipedItem = target;
+                                equipedItem.InteractStart(_currentHit);
+                            }
+                        }
+                        else
+                        {
+                            _interactable = target;
+                            _interactable.InteractStart(_currentHit);
+                            LookSpeedMultiply = _interactable.LookingSpeed;
 
-                        if (hand) hand.SetTexture(_interactable.Hand);
+                            if (hand) hand.SetTexture(_interactable.Hand);
+                        }
                     }
                 }
                 else if (!_interactable && hand) hand.SetEnableImage(false);
             }
             else if (!_interactable && hand) hand.SetEnableImage(false);
 
-            if (_interactable == null) return;
-
-            if (hand) _handRect.position = _camera.WorldToScreenPoint(_interactable.HitPos);
-        
-            if (!_input.interact) //  || _interactCurerntDistance < _maxInteractDistance
+            if (_interactable)
             {
-                _interactable.InteractEnd();
-                _interactable = null;
-                LookSpeedMultiply = 1;
-                if (hand != null)
+                if (hand) _handRect.position = _camera.WorldToScreenPoint(_interactable.HitPos);
+        
+                if (!_input.interact && _interactable) //  || _interactCurerntDistance < _maxInteractDistance
                 {
-                    hand.SetEnableImage(false);
-                    _handRect.position = new Vector3(Screen.width / 2, Screen.height / 2);
+                    _interactable.InteractEnd();
+                    _interactable = null;
+                    LookSpeedMultiply = 1;
+                    if (hand != null)
+                    {
+                        hand.SetEnableImage(false);
+                        _handRect.position = new Vector3(Screen.width / 2, Screen.height / 2);
+                    }
                 }
+            }
+
+            if (_input.drop && equipedItem)
+            {
+                equipedItem.InteractEnd();
+                equipedItem = null;
             }
 
             if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _currentHit,

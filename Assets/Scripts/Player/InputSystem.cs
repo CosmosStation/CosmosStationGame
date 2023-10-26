@@ -71,6 +71,15 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Value"",
+                    ""id"": ""5460dbe5-2b40-409a-b35c-2c6fca80a785"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -307,23 +316,23 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6209f5d7-8def-4329-b080-cdd415e0da93"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""4a8d7e3b-62cb-4621-a8d4-223ce928a639"",
                     ""path"": ""<Keyboard>/i"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""OpenInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ab38241-0ae1-45d7-8ba8-dd8eb32942cf"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -916,6 +925,7 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_OpenInventory = m_Player.FindAction("OpenInventory", throwIfNotFound: true);
+        m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -994,6 +1004,7 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_OpenInventory;
+    private readonly InputAction m_Player_Drop;
     public struct PlayerActions
     {
         private @InputClass m_Wrapper;
@@ -1003,6 +1014,7 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @OpenInventory => m_Wrapper.m_Player_OpenInventory;
+        public InputAction @Drop => m_Wrapper.m_Player_Drop;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1027,6 +1039,9 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
             @OpenInventory.started += instance.OnOpenInventory;
             @OpenInventory.performed += instance.OnOpenInventory;
             @OpenInventory.canceled += instance.OnOpenInventory;
+            @Drop.started += instance.OnDrop;
+            @Drop.performed += instance.OnDrop;
+            @Drop.canceled += instance.OnDrop;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1046,6 +1061,9 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
             @OpenInventory.started -= instance.OnOpenInventory;
             @OpenInventory.performed -= instance.OnOpenInventory;
             @OpenInventory.canceled -= instance.OnOpenInventory;
+            @Drop.started -= instance.OnDrop;
+            @Drop.performed -= instance.OnDrop;
+            @Drop.canceled -= instance.OnDrop;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1233,6 +1251,7 @@ public partial class @InputClass: IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnOpenInventory(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

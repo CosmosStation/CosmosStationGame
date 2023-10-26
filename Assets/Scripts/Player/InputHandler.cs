@@ -13,6 +13,7 @@ namespace Player
 		public bool jump;
 		public bool sprint;
 		public bool interact;
+		public bool drop;
 		public bool crouch;
 		public bool lightState;
 		public bool openInventory;
@@ -65,6 +66,11 @@ namespace Player
 			InteractInput(value.isPressed);
 		}
 		
+		public void OnDrop(InputValue value)
+		{
+			DropInput(value.isPressed);
+		}
+
 		public void OnAction(InputValue value)
 		{
 			ActionInput(value.isPressed);
@@ -100,8 +106,14 @@ namespace Player
 
 		private void InteractInput(bool newInteractState)
 		{
-			Debug.Log(newInteractState);
+			Debug.Log("Interact state: " + newInteractState);
 			interact = newInteractState;
+		}
+
+		private void DropInput(bool newDropState)
+		{
+			Debug.Log("Drop state: " + newDropState);
+			drop = newDropState;
 		}
 
 		private void ActionInput(bool newActionState)

@@ -26,6 +26,8 @@ namespace Interactables
             _boxCollider = GetComponent<BoxCollider>();
             _camTransform = Camera.main.transform;
 
+            interactType = "Equipable";
+
             if (_connectedTrigger != null && !_connectedTrigger.isTrigger)
             	_connectedTrigger.isTrigger = true;
         }
@@ -35,7 +37,7 @@ namespace Interactables
             if (!_isMove) return;
 
             Vector3 force = _playerGrabPoint.position - HitPos;
-            force *= _force;
+            force *= _force * 2;
             transform.rotation = _playerCameraRoot.transform.rotation;
             _rb.AddForceAtPosition(force, HitPos);
         }
@@ -55,7 +57,6 @@ namespace Interactables
             _rb.useGravity = false;
             _rb.drag = 8;
             _rb.angularDrag = 8;
-            _boxCollider.enabled = false;
             _targetDistanceToCam = hit.distance;
             _isMove = true;
         }
@@ -63,7 +64,6 @@ namespace Interactables
         {
             base.InteractEnd();
             _rb.useGravity = true;
-            _boxCollider.enabled = true;
             _rb.drag = 1;
             _rb.angularDrag = 1;
             _isMove = false;

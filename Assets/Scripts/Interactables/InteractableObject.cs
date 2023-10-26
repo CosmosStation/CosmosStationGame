@@ -15,6 +15,8 @@ namespace Interactables
         [SerializeField] internal Executor _mainExecutor, _startExecutor, _endExecutor;
         [SerializeField] internal bool _constHit;
         [SerializeField] internal Vector3 _constHitPos;
+        
+        [HideInInspector] public string interactType = "Default";
 
         internal Vector3 _hitLocal;
 

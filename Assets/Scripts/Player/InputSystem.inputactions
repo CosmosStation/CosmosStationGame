@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Drop",
+                    "type": "Value",
+                    "id": "5460dbe5-2b40-409a-b35c-2c6fca80a785",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -285,23 +294,23 @@
                 },
                 {
                     "name": "",
-                    "id": "6209f5d7-8def-4329-b080-cdd415e0da93",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4a8d7e3b-62cb-4621-a8d4-223ce928a639",
                     "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ab38241-0ae1-45d7-8ba8-dd8eb32942cf",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

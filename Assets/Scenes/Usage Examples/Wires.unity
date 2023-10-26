@@ -408,13 +408,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 432328637143784892, guid: 511f4035206ffd14d84a7ec4fff1320e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 927749225017414011, guid: 511f4035206ffd14d84a7ec4fff1320e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3911862664965696744, guid: 511f4035206ffd14d84a7ec4fff1320e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.223
+      value: 0.2629
       objectReference: {fileID: 0}
     - target: {fileID: 3911862664965696744, guid: 511f4035206ffd14d84a7ec4fff1320e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.192
+      value: -0.2305
       objectReference: {fileID: 0}
     - target: {fileID: 3911862664965696744, guid: 511f4035206ffd14d84a7ec4fff1320e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -460,10 +468,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8071048235779612127, guid: 511f4035206ffd14d84a7ec4fff1320e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8747447679935519145, guid: 511f4035206ffd14d84a7ec4fff1320e, type: 3}
       propertyPath: hand
       value: 
       objectReference: {fileID: 994561481}
+    - target: {fileID: 9087160719669987645, guid: 511f4035206ffd14d84a7ec4fff1320e, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4278,6 +4294,7 @@ MonoBehaviour:
   _endExecutor: {fileID: 0}
   _constHit: 1
   _constHitPos: {x: 0, y: 0, z: 0}
+  interactType: Default
   _force: 60
   _connectedTrigger: {fileID: 0}
   _onlyOneTimeConnect: 0
@@ -4553,6 +4570,7 @@ MonoBehaviour:
   _endExecutor: {fileID: 0}
   _constHit: 1
   _constHitPos: {x: 0, y: 0, z: 0}
+  interactType: Default
   _force: 60
   _connectedTrigger: {fileID: 0}
   _onlyOneTimeConnect: 0
@@ -8277,6 +8295,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8815881629007939896, guid: 34b8c2a25945c58408a1875d782c611d, type: 3}
+      propertyPath: m_Size.z
+      value: 0.53352886
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815881629007939896, guid: 34b8c2a25945c58408a1875d782c611d, type: 3}
+      propertyPath: m_Center.x
+      value: 0.00000009847076
+      objectReference: {fileID: 0}
+    - target: {fileID: 8815881629007939896, guid: 34b8c2a25945c58408a1875d782c611d, type: 3}
+      propertyPath: m_Center.z
+      value: 0.15891682
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7093401516283915309, guid: 34b8c2a25945c58408a1875d782c611d, type: 3}
@@ -8396,7 +8426,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6895028283656795357}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3e9901d473c4344b91d7bb4c54fb2a6, type: 3}
+  m_Script: {fileID: 11500000, guid: fea054ea473f4e6b92b321ce3178760a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LookingSpeed: 1
@@ -8406,11 +8436,10 @@ MonoBehaviour:
   _endExecutor: {fileID: 0}
   _constHit: 1
   _constHitPos: {x: 0, y: 0, z: 0}
+  interactType: Default
   _force: 30
   _connectedTrigger: {fileID: 0}
   _onlyOneTimeConnect: 0
-  _playerGrabPoint: {fileID: 781741253}
-  _playerCameraRoot: {fileID: 1568604946}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
