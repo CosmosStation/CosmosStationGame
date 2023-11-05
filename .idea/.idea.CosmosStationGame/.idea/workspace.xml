@@ -2,21 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9ba46a8-38aa-454d-bb28-b4d9d1ab4499" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Equipables.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/EditorMods.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CosmosStationGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CosmosStationGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Box.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Box.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Box.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Box.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Door.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Door.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Door.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Door.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Lever.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Lever.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Lever.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Lever.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Slider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Slider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Slider.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Slider.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Valve.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Valve.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Valve.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Physics/Valve.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PhysicCalbes/Prefabs/CableContactFemale.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PhysicCalbes/Prefabs/CableContactFemale.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Usage Examples/Wires.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Usage Examples/Wires.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Equipable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Equipable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/InteractableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/InteractableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Plug.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Plug.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/InputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/InputHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/InteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/InteractionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/Connector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/Connector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +26,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/56073df97ede4f769c2cc45d546d986d172200/55/5330c31a/UnityEvent`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Globals.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/Equipable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/InteractableObject.cs" root0="FORCE_HIGHLIGHTING" />
@@ -35,6 +35,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/Connector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/PhysCable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.6.1/InputSystem/Plugins/PlayerInput/InputValue.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@14.0.8/Runtime/Common/SerializedDictionary.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -132,7 +133,9 @@
       <workItem from="1697352110569" duration="1536000" />
       <workItem from="1697359878091" duration="4010000" />
       <workItem from="1697888351674" duration="8916000" />
-      <workItem from="1698252203330" duration="9016000" />
+      <workItem from="1698252203330" duration="9759000" />
+      <workItem from="1698484958493" duration="12413000" />
+      <workItem from="1699097847111" duration="17852000" />
     </task>
     <servers />
   </component>
@@ -154,5 +157,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Player/InteractionController.cs</url>
+          <line>68</line>
+          <properties documentPath="G:\CosmosStationGame\Assets\Scripts\Player\InteractionController.cs" initialLine="68" containingFunctionPresentation="method 'ManageInteractable'">
+            <startOffsets>
+              <option value="2252" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2280" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

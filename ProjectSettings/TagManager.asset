@@ -8,6 +8,7 @@ TagManager:
   - DialogeSpeaker
   - CinemachineTarget
   - PickUpItem
+  - Wire
   layers:
   - Default
   - TransparentFX

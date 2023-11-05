@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Executors;
 using Player;
+using Sirenix.OdinInspector;
 
 namespace Interactables
 {

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 
 namespace HPhysic
 {
@@ -68,6 +69,17 @@ namespace HPhysic
             _wasConnectionKinematic = secondConnector.Rigidbody.isKinematic;
             UpdateInteractableWhenIsConnected();
         }
+
+        public void ConnectionHandler(Object passedObject)
+        {
+            GameObject connetorObject = passedObject.GameObject();
+            // Connector connectorToHandle = connetorObject.GetComponent<Connector>();
+            Debug.Log("HandlingConnection");
+            Debug.Log(passedObject);
+            Debug.Log(connetorObject);
+            // Connect(connectorToHandle);
+        }
+        
         public void Connect(Connector secondConnector)
         {
             if (secondConnector == null)

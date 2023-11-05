@@ -17,7 +17,7 @@ namespace Player
 
         public float LookSpeedMultiply { get; private set; } = 1;
 
-        public InteractableObject equipedItem = null;
+        public Equipable equipedItem = null;
         private bool isItemEquiped = false;
         
         Camera _camera;
@@ -43,17 +43,17 @@ namespace Player
 
         void FixedUpdate()
         {
-            this.ManageInteractable();
-            this.ManageGrab();
-            this.ManageEquipedInteract();
-            this.drawDebug();
+            ManageInteractable();
+            ManageDrop();
+            ManageEquipedInteract();
+            drawDebug();
         }
     
         private void ManageInteractable()
         {
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _currentHit, interactRange, layerMaskInteract))
-            {
-                var target = _currentHit.transform.GetComponent<InteractableObject>();
+        {
+            var target = _currentHit.transform.GetComponent<InteractableObject>();
                 if (target)
                 {
                     if (hand) hand.SetEnableImage(true);
@@ -65,7 +65,7 @@ namespace Player
                         {
                             if (equipedItem == null)
                             {
-                                equipedItem = target;
+                                equipedItem = target.GetComponent<Equipable>();
                                 equipedItem.InteractStart(_currentHit);
                             }
                         }
@@ -101,18 +101,31 @@ namespace Player
             }
         }
 
-        private void ManageGrab()
+        private void ManageDrop()
         {
             if (_input.drop && equipedItem)
             {
-                equipedItem.InteractEnd();
-                equipedItem = null;
+                DropEquipped();
             }
+        }
+
+        public void DropEquipped()
+        {
+            equipedItem.InteractEnd();
+            equipedItem = null;
         }
 
         private void ManageEquipedInteract()
         {
-            if (_input.action)
+            if (_input.action && equipedItem)
+            {
+                Debug.Log(_input.action, equipedItem);
+                if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _currentHit,
+                        interactRange, layerMaskInteract))
+                {
+                    equipedItem.InteractWith(_currentHit.transform.gameObject);
+                }
+            }
         }
 
         private void drawDebug()

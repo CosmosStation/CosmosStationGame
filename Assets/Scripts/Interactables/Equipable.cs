@@ -1,10 +1,51 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Rendering;
+
+
+public enum EqupableType
+{
+    Individual,
+    ByTag
+}
 
 namespace Interactables
 {
 	[RequireComponent(typeof(Rigidbody))]
 	public class Equipable : InteractableObject
     {
+        [Header("Action interactions"), ValueDropdown("EquipableTypeOptions")]
+        public EqupableType selectedEquipableType;
+        [ShowIf("IsIndividualSelected")]
+        public SerializedDictionary<GameObject, UnityEvent> interactionsForIndivivduals =
+            new SerializedDictionary<GameObject, UnityEvent>();
+        [ShowIf("IsByTagSelected"), SerializeField]
+        private UnityEvent<GameObject> interactionsForTag = new UnityEvent<GameObject>();
+        [ShowIf("IsByTagSelected"), ValueDropdown("GetAllTags"), SerializeField] 
+        private string selectedTag;
+
+        private ValueDropdownList<string> GetAllTags()
+        {
+            ValueDropdownList<string> tags = new ValueDropdownList<string>();
+            foreach (var tag in UnityEditorInternal.InternalEditorUtility.tags)
+            {
+                tags.Add(tag, tag);
+            }
+
+            return tags;
+        }
+
+        private static readonly ValueDropdownList<EqupableType> EquipableTypeOptions = new ValueDropdownList<EqupableType>
+        {
+            { "Individual", EqupableType.Individual },
+            { "By Tag", EqupableType.ByTag }
+        };
+
+        private bool IsIndividualSelected() => selectedEquipableType == EqupableType.Individual;
+        private bool IsByTagSelected() => selectedEquipableType == EqupableType.ByTag;
+        
+        [Header("Parameters")]
         [SerializeField] int _force = 30;
         [SerializeField] Collider _connectedTrigger;
         [SerializeField] bool _onlyOneTimeConnect;
@@ -44,6 +85,7 @@ namespace Interactables
 
         public override void InteractStart(RaycastHit hit)
         {
+            Debug.Log("Equipable interaction");
             base.InteractStart(hit);
             if (_onlyOneTimeConnect && _oneTimeConnected) return;
             
@@ -86,6 +128,21 @@ namespace Interactables
 
             if (_mainExecutor != null) _mainExecutor.Execute(1);
         	if (_onlyOneTimeConnect) _oneTimeConnected = true;
+        }
+
+        public void InteractWith(GameObject target)
+        {
+            Debug.Log("Interact through equipped");
+            if (IsIndividualSelected() &&
+                interactionsForIndivivduals.TryGetValue(target, out UnityEvent interactionEventForGameObject))
+            {
+                Debug.Log("There is a match");
+                interactionEventForGameObject?.Invoke();
+            } else if (IsByTagSelected() && target.CompareTag(selectedTag))
+            {
+                Debug.Log("By Tag");
+                interactionsForTag.Invoke(target);
+            } 
         }
     }
 }

@@ -118,7 +118,8 @@ namespace Player
 
 		private void ActionInput(bool newActionState)
 		{
-			interact = newActionState;
+			Debug.Log("Action state: " + newActionState);
+			action = newActionState;
 		}
 
 		private void AltActionInput(bool newAltActionState)
