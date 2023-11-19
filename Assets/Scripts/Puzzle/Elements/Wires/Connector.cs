@@ -70,16 +70,6 @@ namespace HPhysic
             UpdateInteractableWhenIsConnected();
         }
 
-        public void ConnectionHandler(Object passedObject)
-        {
-            GameObject connetorObject = passedObject.GameObject();
-            // Connector connectorToHandle = connetorObject.GetComponent<Connector>();
-            Debug.Log("HandlingConnection");
-            Debug.Log(passedObject);
-            Debug.Log(connetorObject);
-            // Connect(connectorToHandle);
-        }
-        
         public void Connect(Connector secondConnector)
         {
             if (secondConnector == null)
@@ -91,8 +81,8 @@ namespace HPhysic
             if (IsConnected)
                 Disconnect(secondConnector);
 
-            secondConnector.transform.rotation = ConnectionRotation * secondConnector.RotationOffset;
-            secondConnector.transform.position = ConnectionPosition - (secondConnector.ConnectionPosition - secondConnector.transform.position);
+            transform.rotation = secondConnector.ConnectionRotation * RotationOffset;
+            transform.position = secondConnector.ConnectionPosition - (ConnectionPosition - transform.position);
 
             _fixedJoint = gameObject.AddComponent<FixedJoint>();
             _fixedJoint.connectedBody = secondConnector.Rigidbody;

@@ -1,3 +1,5 @@
+using System;
+using Interactables.Equipables;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,10 +20,10 @@ namespace Interactables
         [Header("Action interactions"), ValueDropdown("EquipableTypeOptions")]
         public EqupableType selectedEquipableType;
         [ShowIf("IsIndividualSelected")]
-        public SerializedDictionary<GameObject, UnityEvent> interactionsForIndivivduals =
-            new SerializedDictionary<GameObject, UnityEvent>();
+        public SerializedDictionary<GameObject, AbstractEquipToTargetHandler> interactionsForIndivivduals =
+            new SerializedDictionary<GameObject, AbstractEquipToTargetHandler>();
         [ShowIf("IsByTagSelected"), SerializeField]
-        private UnityEvent<GameObject> interactionsForTag = new UnityEvent<GameObject>();
+        private AbstractEquipToTargetHandler interactionForTag;
         [ShowIf("IsByTagSelected"), ValueDropdown("GetAllTags"), SerializeField] 
         private string selectedTag;
 
@@ -44,7 +46,7 @@ namespace Interactables
 
         private bool IsIndividualSelected() => selectedEquipableType == EqupableType.Individual;
         private bool IsByTagSelected() => selectedEquipableType == EqupableType.ByTag;
-        
+
         [Header("Parameters")]
         [SerializeField] int _force = 30;
         [SerializeField] Collider _connectedTrigger;
@@ -134,14 +136,14 @@ namespace Interactables
         {
             Debug.Log("Interact through equipped");
             if (IsIndividualSelected() &&
-                interactionsForIndivivduals.TryGetValue(target, out UnityEvent interactionEventForGameObject))
+                interactionsForIndivivduals.TryGetValue(target, out AbstractEquipToTargetHandler interactionEventForGameObject))
             {
                 Debug.Log("There is a match");
-                interactionEventForGameObject?.Invoke();
+                interactionEventForGameObject?.HandleInteraction(target);
             } else if (IsByTagSelected() && target.CompareTag(selectedTag))
             {
                 Debug.Log("By Tag");
-                interactionsForTag.Invoke(target);
+                interactionForTag.HandleInteraction(target);
             } 
         }
     }
