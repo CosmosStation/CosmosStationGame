@@ -100,6 +100,18 @@ namespace PixelCrushers.DialogueSystem
             {
                 return listener;
             }
+            else if (string.Compare(specifier, SequencerKeywords.SpeakerPortrait, System.StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                return GetPortraitImage(speaker);
+            }
+            else if (string.Compare(specifier, SequencerKeywords.ListenerPortrait, System.StringComparison.OrdinalIgnoreCase) == 0)
+            {
+                return GetPortraitImage(listener);
+            }
+            else if (specifier.StartsWith(SequencerKeywords.ActorPrefix))
+            {
+                return CharacterInfo.GetRegisteredActorTransform(specifier.Substring(SequencerKeywords.ActorPrefix.Length));
+            }
             else
             {
                 GameObject go = FindSpecifier(specifier);
@@ -154,7 +166,7 @@ namespace PixelCrushers.DialogueSystem
             if (t != null) return t.gameObject;
 
             // Check registered subjects:
-            if (registeredSubjects.TryGetValue(specifier, out t)) return t.gameObject;
+            if (registeredSubjects.TryGetValue(specifier, out t) && t != null) return t.gameObject;
 
             // Search for active objects in scene:
             var match = GameObject.Find(specifier);
@@ -175,6 +187,43 @@ namespace PixelCrushers.DialogueSystem
                 }
             }
             return null;
+        }
+
+        /// <returns>
+        /// The transform of the Portrait Image GameObject, or null if not found.
+        /// Must be using Standard Dialogue UI. Not for use with simultaneous conversations.
+        /// </returns>
+        public static Transform GetPortraitImage(Transform subject)
+        {
+            if (DialogueManager.standardDialogueUI == null) return null;
+            if (subject == null) return null;
+
+            var subtitleControls = DialogueManager.standardDialogueUI.conversationUIElements.standardSubtitleControls;
+            DialogueActor dialogueActor;
+            StandardUISubtitlePanel panel = null;
+
+            if (DialogueManager.isConversationActive && DialogueManager.currentConversationState != null)
+            {
+                var subtitle = DialogueManager.currentConversationState.subtitle;
+                if (subtitle.speakerInfo != null && subtitle.speakerInfo.transform == subject)
+                {
+                    panel = subtitleControls.GetPanel(subtitle, out dialogueActor);
+                }
+            }
+
+            if (panel == null)
+            {
+                StandardUISubtitlePanel defaultPanel = subtitleControls.defaultNPCPanel;
+                dialogueActor = DialogueActor.GetDialogueActorComponent(subject);
+                if (dialogueActor != null)
+                {
+                    var actor = DialogueManager.masterDatabase.GetActor(dialogueActor.actor);
+                    if (actor != null) defaultPanel = actor.IsPlayer ? subtitleControls.defaultPCPanel : subtitleControls.defaultNPCPanel;
+                }
+                panel = subtitleControls.GetActorTransformPanel(subject, defaultPanel, out dialogueActor);
+            }
+
+            return (panel != null && panel.portraitImage != null) ? panel.portraitImage.transform : null;
         }
 
         /// <summary>

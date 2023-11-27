@@ -1,6 +1,7 @@
 // Copyright (c) Pixel Crushers. All rights reserved.
 
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -40,6 +41,8 @@ namespace PixelCrushers.DialogueSystem
         protected QuestPicker questPicker = null;
         protected LuaScriptWizard luaScriptWizard = null;
         protected Rect sequenceRect;
+        protected DialogueEntryPicker entryPicker = null;
+        protected string[] conversationTitles = null;
 
         protected DialogueSystemTrigger trigger;
         protected SerializedProperty triggerProperty;
@@ -57,6 +60,8 @@ namespace PixelCrushers.DialogueSystem
         protected bool showUnityEventAction;
 
         protected SequenceSyntaxState sequenceSyntaxState = SequenceSyntaxState.Unchecked;
+
+        protected Color originalColor = Color.white;
 
         public virtual void OnEnable()
         {
@@ -118,6 +123,7 @@ namespace PixelCrushers.DialogueSystem
             trigger = target as DialogueSystemTrigger;
             if (trigger == null) return;
             serializedObject.Update();
+            originalColor = GUI.color;
             DrawTopInfo();
             DrawConditions();
             DrawActions();
@@ -328,7 +334,9 @@ namespace PixelCrushers.DialogueSystem
                     if (questPicker != null)
                     {
                         serializedObject.ApplyModifiedProperties();
+                        if (string.IsNullOrEmpty(trigger.questName)) GUI.color = Color.red;
                         questPicker.Draw();
+                        GUI.color = originalColor;
                         var hadQuestName = !string.IsNullOrEmpty(trigger.questName);
                         trigger.questName = questPicker.currentQuest;
                         trigger.useQuestNamePicker = questPicker.usePicker;
@@ -351,6 +359,14 @@ namespace PixelCrushers.DialogueSystem
                     {
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("questEntryNumber"), true);
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("questEntryState"), true);
+
+                        // Additional quest entry state:
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("setAnotherQuestEntryState"), true);
+                        if (serializedObject.FindProperty("setAnotherQuestEntryState").boolValue)
+                        {
+                            EditorGUILayout.PropertyField(serializedObject.FindProperty("anotherQuestEntryNumber"), true);
+                            EditorGUILayout.PropertyField(serializedObject.FindProperty("anotherQuestEntryState"), true);
+                        }
                     }
                 }
                 finally
@@ -480,7 +496,9 @@ namespace PixelCrushers.DialogueSystem
                     EditorWindowTools.EditorGUILayoutBeginGroup();
                     EditorGUILayout.BeginHorizontal();
                     var barkSourceProperty = serializedObject.FindProperty("barkSource");
+                    if (barkSourceProperty.enumValueIndex < 0) GUI.color = Color.red;                         
                     EditorGUILayout.PropertyField(barkSourceProperty, true);
+                    GUI.color = originalColor;
                     if (GUILayout.Button("x", GUILayout.Width(18), GUILayout.Height(14)))
                     {
                         serializedObject.FindProperty("barkSource").enumValueIndex = 0;
@@ -494,7 +512,9 @@ namespace PixelCrushers.DialogueSystem
                     {
                         case DialogueSystemTrigger.BarkSource.Conversation:
                             var barkConversationProperty = serializedObject.FindProperty("barkConversation");
+                            if (string.IsNullOrEmpty(barkConversationProperty.stringValue)) GUI.color = Color.red;
                             EditorGUILayout.PropertyField(barkConversationProperty, true);
+                            GUI.color = originalColor;
                             if (!string.IsNullOrEmpty(barkConversationProperty.stringValue))
                             {
                                 EditorGUILayout.PropertyField(serializedObject.FindProperty("barkOrder"), true);
@@ -521,8 +541,6 @@ namespace PixelCrushers.DialogueSystem
             }
         }
 
-        private DialogueEntryPicker entryPicker = null;
-
         protected virtual void DrawConversationAction()
         {
             foldouts.conversationFoldout = EditorWindowTools.EditorGUILayoutFoldout("Start Conversation", "Start a conversation.", foldouts.conversationFoldout, false);
@@ -533,7 +551,14 @@ namespace PixelCrushers.DialogueSystem
                     var conversationProperty = serializedObject.FindProperty("conversation");
                     var hadConversation = !string.IsNullOrEmpty(conversationProperty.stringValue);
                     EditorWindowTools.EditorGUILayoutBeginGroup();
+                    EditorGUI.BeginChangeCheck();
+                    if (string.IsNullOrEmpty(conversationProperty.stringValue)) GUI.color = Color.red;
                     EditorGUILayout.PropertyField(conversationProperty, true);
+                    GUI.color = originalColor;
+                    if (EditorGUI.EndChangeCheck())
+                    {
+                        conversationTitles = null;
+                    }
                     if (string.IsNullOrEmpty(conversationProperty.stringValue))
                     {
                         if (hadConversation) showConversationAction = false;
@@ -544,9 +569,11 @@ namespace PixelCrushers.DialogueSystem
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("conversationConversant"), true);
 
                         var entryIDProperty = serializedObject.FindProperty("startConversationEntryID");
+                        var entryTitleProperty = serializedObject.FindProperty("startConversationEntryTitle");
                         var specifyEntryID = EditorGUILayout.Toggle(new GUIContent("Specify Starting Entry", "Start conversation at a specific entry ID."), (entryIDProperty.intValue != -1));
                         if (specifyEntryID)
                         {
+                            // Draw entry ID picker:
                             if (entryPicker == null)
                             {
                                 entryPicker = new DialogueEntryPicker(conversationProperty.stringValue);
@@ -559,15 +586,36 @@ namespace PixelCrushers.DialogueSystem
                             {
                                 entryIDProperty.intValue = Mathf.Max(0, EditorGUILayout.IntField(new GUIContent("Entry ID", "Start at this entry ID."), entryIDProperty.intValue));
                             }
+                            if (entryIDProperty.intValue > 0) entryTitleProperty.stringValue = string.Empty;
+
+                            // Draw entry title picker:
+                            if (conversationTitles == null)
+                            {
+                                conversationTitles = GetUniqueTitles(conversationProperty.stringValue);
+                            }
+                            var titleIndex = (entryIDProperty.intValue <= 0) ? GetTitleIndex(conversationTitles, entryTitleProperty.stringValue) : -1;
+                            EditorGUI.BeginChangeCheck();
+                            titleIndex = EditorGUILayout.Popup(new GUIContent("Entry Title", "Start at entry with this Title."), titleIndex, conversationTitles);
+                            if (EditorGUI.EndChangeCheck())
+                            {
+                                if (0 <= titleIndex && titleIndex < conversationTitles.Length)
+                                {
+                                    entryTitleProperty.stringValue = conversationTitles[titleIndex];
+                                    entryIDProperty.intValue = 0;
+                                }
+                            }
                         }
                         else
                         {
                             entryIDProperty.intValue = -1;
+                            entryTitleProperty.stringValue = string.Empty;
                         }
 
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("exclusive"), true);
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("replace"), true);
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("queue"), true);
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("skipIfNoValidEntries"), true);
+                        EditorGUILayout.PropertyField(serializedObject.FindProperty("preventRestartOnSameFrameEnded"), true);
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("stopConversationOnTriggerExit"), true);
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("stopConversationIfTooFar"), true);
                         if (serializedObject.FindProperty("stopConversationIfTooFar").boolValue)
@@ -584,6 +632,40 @@ namespace PixelCrushers.DialogueSystem
                     EditorWindowTools.EditorGUILayoutEndGroup();
                 }
             }
+        }
+
+        protected string[] GetUniqueTitles(string conversationTitle)
+        {
+            var list = new List<string>();
+            if (trigger.selectedDatabase != null)
+            {
+                var conversation = trigger.selectedDatabase.GetConversation(conversationTitle);
+                if (conversation != null)
+                {
+                    foreach (var entry in conversation.dialogueEntries)
+                    {
+                        var title = entry.Title;
+                        if (!list.Contains(title))
+                        {
+                            list.Add(title);
+                        }
+                    }
+                }
+            }
+            return list.ToArray();
+        }
+
+        protected int GetTitleIndex(string[] titles, string currentTitle)
+        {
+            if (string.IsNullOrEmpty(currentTitle) || titles == null) return -1;
+            for (int i = 0; i < titles.Length; i++)
+            {
+                if (string.Equals(currentTitle, titles[i]))
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         protected virtual void DrawUnityEventAction()

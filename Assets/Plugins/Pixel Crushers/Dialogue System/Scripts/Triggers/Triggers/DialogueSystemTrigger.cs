@@ -75,6 +75,14 @@ namespace PixelCrushers.DialogueSystem
         [QuestState]
         public QuestState questEntryState;
 
+        public bool setAnotherQuestEntryState = false;
+
+        [QuestEntryPopup]
+        public int anotherQuestEntryNumber = 1;
+
+        [QuestState]
+        public QuestState anotherQuestEntryState;
+
         // //////////////////////////////////////////////////////////////////////////////////
         // Lua:
 
@@ -156,7 +164,7 @@ namespace PixelCrushers.DialogueSystem
         /// The title of the bark conversation. Used if barkSource is set to conversation.
         /// </summary>
         [Tooltip("Conversation to get bark content from.")]
-        [ConversationPopup(false)]
+        [ConversationPopup(false, true)]
         public string barkConversation = string.Empty;
 
         /// <summary>
@@ -218,7 +226,7 @@ namespace PixelCrushers.DialogueSystem
         /// The title of the conversation to start.
         /// </summary>
         [Tooltip("Conversation to start. Leave blank for no conversation.")]
-        [ConversationPopup(false)]
+        [ConversationPopup(false, true)]
         public string conversation = string.Empty;
 
         /// <summary>
@@ -240,6 +248,9 @@ namespace PixelCrushers.DialogueSystem
         [Tooltip("Start at this entry ID.")]
         public int startConversationEntryID = -1;
 
+        [Tooltip("Start at entry with this Title. If set, this takes precedence over Start Conversation Entry ID.")]
+        public string startConversationEntryTitle;
+
         /// <summary>
         /// Only start if no other conversation is active.
         /// </summary>
@@ -253,11 +264,20 @@ namespace PixelCrushers.DialogueSystem
         public bool replace = false;
 
         /// <summary>
+        /// If another conversation is active and simultaneous conversations aren't allowed, queue this conversation to start as soon as active one ends.
+        /// </summary>
+        [Tooltip("If another conversation is active and simultaneous conversations aren't allowed, queue this conversation to start as soon as active one ends.")]
+        public bool queue = false;
+
+        /// <summary>
         /// If this is <c>true</c> and no valid entries currently link from the start entry,
         /// don't start the conversation.
         /// </summary>
         [Tooltip("Only trigger if at least one entry's Conditions are currently true.")]
         public bool skipIfNoValidEntries = false;
+
+        [Tooltip("Disallow conversation if same conversation just ended on this frame.")]
+        public bool preventRestartOnSameFrameEnded = false;
 
         /// <summary>
         /// Set <c>true</c> to stop the conversation if the actor leaves the trigger area.
@@ -361,6 +381,8 @@ namespace PixelCrushers.DialogueSystem
         protected ConversationState cachedState = null;
         protected BarkGroupMember barkGroupMember = null;
         protected IBarkUI barkUI = null;
+        protected bool isConversationQueued = false;
+        protected Transform queuedActor = null;
         protected float earliestTimeToAllowTriggerExit = 0;
         protected const float MarginToAllowTriggerExit = 0.2f;
         protected Coroutine monitorDistanceCoroutine = null;
@@ -368,9 +390,11 @@ namespace PixelCrushers.DialogueSystem
         protected CursorLockMode savedLockState;
         protected bool didIPause = false;
         protected float preConversationTimeScale = 1;
+        protected int frameConversationEnded = -1;
         protected bool tryingToStart = false;
         protected bool hasSaveSystem;
         protected Coroutine fireIfNoSaveDataAppliedCoroutine = null;
+        protected ActiveConversationRecord activeConversation;
 
         #endregion
 
@@ -380,8 +404,10 @@ namespace PixelCrushers.DialogueSystem
         {
             barkHistory = new BarkHistory(barkOrder);
             sequencer = null;
-            hasSaveSystem = FindObjectOfType<SaveSystem>() != null;
-            if (hasSaveSystem && trigger == DialogueSystemTriggerEvent.OnSaveDataApplied)
+            hasSaveSystem = GameObjectUtility.FindFirstObjectByType<SaveSystem>() != null;
+            if (hasSaveSystem &&
+                ((trigger == DialogueSystemTriggerEvent.OnSaveDataApplied) ||
+                 (trigger == DialogueSystemTriggerEvent.OnStart && DialogueManager.instance.onStartTriggerWaitForSaveDataApplied)))
             {
                 SaveSystem.saveDataApplied += OnSaveDataApplied;
             }
@@ -403,8 +429,16 @@ namespace PixelCrushers.DialogueSystem
             }
             else if (trigger == DialogueSystemTriggerEvent.OnStart)
             {
-                // Wait until end of frame to allow all other components to finish their Start() methods:
-                StartCoroutine(StartAtEndOfFrame());
+                if (hasSaveSystem && DialogueManager.instance.onStartTriggerWaitForSaveDataApplied)
+                {
+                    // Dialogue Manager option has configured OnStart to work like OnSaveDataApplied, so start check here:
+                    fireIfNoSaveDataAppliedCoroutine = StartCoroutine(FireIfNoSaveDataApplied());
+                }
+                else
+                {
+                    // Wait until end of frame to allow all other components to finish their Start() methods:
+                    StartCoroutine(StartAtEndOfFrame());
+                }
             }
             else if (trigger == DialogueSystemTriggerEvent.OnSaveDataApplied)
             {
@@ -474,17 +508,33 @@ namespace PixelCrushers.DialogueSystem
 
         private void OnConversationEndAnywhere(Transform actor)
         {
-            DialogueManager.instance.conversationEnded -= OnConversationEndAnywhere;
-            StopMonitoringConversationDistance();
-            if (showCursorDuringConversation)
+            var didMyConversationEnd = !DialogueManager.allowSimultaneousConversations ||
+                (activeConversation == null) || !activeConversation.conversationController.isActive;
+            if (didMyConversationEnd)
             {
-                Cursor.visible = wasCursorVisible;
-                Cursor.lockState = savedLockState;
+                DialogueManager.instance.conversationEnded -= OnConversationEndAnywhere;                
+                StopMonitoringConversationDistance();
+                if (showCursorDuringConversation)
+                {
+                    Cursor.visible = wasCursorVisible;
+                    Cursor.lockState = savedLockState;
+                }
+                if (pauseGameDuringConversation && didIPause)
+                {
+                    didIPause = false;
+                    Time.timeScale = preConversationTimeScale;
+                }
+                frameConversationEnded = Time.frameCount;
             }
-            if (pauseGameDuringConversation && didIPause)
+        }
+
+        private void OnConversationEndCheckQueue(Transform actor)
+        {
+            if (isConversationQueued && !DialogueManager.isConversationActive)
             {
-                didIPause = false;
-                Time.timeScale = preConversationTimeScale;
+                DialogueManager.instance.conversationEnded -= OnConversationEndAnywhere;
+                isConversationQueued = false;
+                DoConversationAction(queuedActor);
             }
         }
 
@@ -557,11 +607,11 @@ namespace PixelCrushers.DialogueSystem
             if (!enabled) return;
             if (stopConversationOnTriggerExit &&
                 DialogueManager.isConversationActive &&
-                (Time.time > earliestTimeToAllowTriggerExit) &&
+                (GetCurrentDialogueTime() > earliestTimeToAllowTriggerExit) &&
                 ((DialogueManager.currentActor == otherTransform) || (DialogueManager.currentConversant == otherTransform)))
             {
                 if (DialogueDebug.logInfo) Debug.Log("Dialogue System: Stopping conversation because " + otherTransform + " exited trigger area.", this);
-                DialogueManager.StopConversation();
+                StopActiveConversation();
             }
             else if (trigger == DialogueSystemTriggerEvent.OnTriggerExit)
             {
@@ -609,9 +659,14 @@ namespace PixelCrushers.DialogueSystem
 
         public void OnDestroy()
         {
-            if (hasSaveSystem && trigger == DialogueSystemTriggerEvent.OnSaveDataApplied)
+            if (hasSaveSystem)
             {
                 SaveSystem.saveDataApplied -= OnSaveDataApplied;
+                if (fireIfNoSaveDataAppliedCoroutine != null)
+                {
+                    StopCoroutine(fireIfNoSaveDataAppliedCoroutine);
+                    fireIfNoSaveDataAppliedCoroutine = null;
+                }
             }
             if (listenForOnDestroy && trigger == DialogueSystemTriggerEvent.OnDestroy)
             {
@@ -630,7 +685,7 @@ namespace PixelCrushers.DialogueSystem
             // start immediately instead of waiting for end of frame.
             if (Time.frameCount > 1)
             {
-                yield return new WaitForEndOfFrame();
+                yield return CoroutineUtility.endOfFrame;
             }
             TryStart(null);
         }
@@ -642,7 +697,10 @@ namespace PixelCrushers.DialogueSystem
                 StopCoroutine(fireIfNoSaveDataAppliedCoroutine);
                 fireIfNoSaveDataAppliedCoroutine = null;
             }
-            TryStart(null);
+            if (enabled)
+            {
+                TryStart(null);
+            }
         }
 
         protected virtual IEnumerator FireIfNoSaveDataApplied()
@@ -685,6 +743,11 @@ namespace PixelCrushers.DialogueSystem
 
         public virtual void Fire(Transform actor)
         {
+            if (!DialogueManager.hasInstance)
+            {
+                Debug.LogError($"Dialogue System: Dialogue System Trigger '{name}' can't fire. There is no Dialogue Manager GameObject.", this);
+                return;
+            }
             if (DialogueDebug.logInfo) Debug.Log("Dialogue System: Dialogue System Trigger is firing " + trigger + ".", this);
             DoQuestAction();
             DoLuaAction(actor);
@@ -708,7 +771,11 @@ namespace PixelCrushers.DialogueSystem
         {
             if (string.IsNullOrEmpty(questName)) return;
             if (setQuestState) QuestLog.SetQuestState(questName, questState);
-            if (setQuestEntryState) QuestLog.SetQuestEntryState(questName, questEntryNumber, questEntryState);
+            if (setQuestEntryState)
+            {
+                QuestLog.SetQuestEntryState(questName, questEntryNumber, questEntryState);
+                if (setAnotherQuestEntryState) QuestLog.SetQuestEntryState(questName, anotherQuestEntryNumber, anotherQuestEntryState);
+            }
         }
 
         #endregion
@@ -717,9 +784,10 @@ namespace PixelCrushers.DialogueSystem
 
         protected virtual void DoLuaAction(Transform actor)
         {
+            if (string.IsNullOrEmpty(luaCode)) return;
             if (actor != null)
             {
-                var dialogueActor = actor.GetComponent<DialogueActor>();
+                var dialogueActor = DialogueActor.GetDialogueActorComponent(actor);
                 var actorName = (dialogueActor != null) ? dialogueActor.actor : actor.name;
                 DialogueLua.SetVariable("ActorIndex", actorName);
                 DialogueLua.SetVariable("Actor", DialogueActor.GetActorName(actor));
@@ -917,9 +985,16 @@ namespace PixelCrushers.DialogueSystem
             if (replace && DialogueManager.isConversationActive)
             {
                 if (DialogueDebug.logInfo) Debug.Log("Dialogue System: Stopping current active conversation " + DialogueManager.lastConversationStarted + " and starting " + conversation + ".", this);
-                DialogueManager.StopConversation();
+                DialogueManager.StopAllConversations();
             }
-            if (exclusive && DialogueManager.isConversationActive)
+            if (queue && !DialogueManager.allowSimultaneousConversations && DialogueManager.isConversationActive)
+            {
+                isConversationQueued = true;
+                queuedActor = actor;
+                DialogueManager.instance.conversationEnded += OnConversationEndCheckQueue;
+                if (DialogueDebug.logInfo) Debug.Log("Dialogue System: Conversation triggered on " + name + " is queued to play as soon as the current conversation ends.", this);
+            }
+            else if (exclusive && DialogueManager.isConversationActive)
             {
                 if (DialogueDebug.logInfo) Debug.Log("Dialogue System: Conversation triggered on " + name + " but skipping because another conversation is active.", this);
             }
@@ -934,26 +1009,57 @@ namespace PixelCrushers.DialogueSystem
                     var registeredTransform = (conversationConversantActor != null) ? CharacterInfo.GetRegisteredActorTransform(conversationConversantActor.Name) : null;
                     conversantTransform = (registeredTransform != null) ? registeredTransform : this.transform;
                 }
-                if (skipIfNoValidEntries && !DialogueManager.ConversationHasValidEntry(conversation, actorTransform, conversantTransform, startConversationEntryID))
+                var entryID = !string.IsNullOrEmpty(startConversationEntryTitle) ? GetEntryIDFromTitle(conversation, startConversationEntryTitle)
+                    : startConversationEntryID;
+                if (skipIfNoValidEntries && !DialogueManager.ConversationHasValidEntry(conversation, actorTransform, conversantTransform, entryID))
                 {
                     if (DialogueDebug.logInfo) Debug.Log("Dialogue System: Conversation triggered on " + name + " but skipping because no entries are currently valid.", this);
+                }
+                else if (preventRestartOnSameFrameEnded && frameConversationEnded == Time.frameCount && DialogueManager.lastConversationStarted == conversation)
+                {
+                    if (DialogueDebug.logInfo) Debug.Log("Dialogue System: Conversation triggered on " + name + " but skipping because same conversation just ended on this frame.", this);
                 }
                 else
                 {
 
-                    if (stopConversationIfTooFar || showCursorDuringConversation || pauseGameDuringConversation)
+                    if (stopConversationIfTooFar || showCursorDuringConversation || pauseGameDuringConversation || preventRestartOnSameFrameEnded)
                     { // Trigger may not be on actor or conversant, so we need to hook into these events:
                         DialogueManager.instance.conversationStarted += OnConversationStartAnywhere;
                         DialogueManager.instance.conversationEnded += OnConversationEndAnywhere;
                     }
 
-                    DialogueManager.StartConversation(conversation, actorTransform, conversantTransform, startConversationEntryID);
-                    earliestTimeToAllowTriggerExit = Time.time + MarginToAllowTriggerExit;
+                    DialogueManager.StartConversation(conversation, actorTransform, conversantTransform, entryID);
+                    activeConversation = DialogueManager.instance.activeConversation;
+                    earliestTimeToAllowTriggerExit = GetCurrentDialogueTime() + MarginToAllowTriggerExit;
                     if (stopConversationIfTooFar)
                     {
                         monitorDistanceCoroutine = StartCoroutine(MonitorDistance(DialogueManager.currentActor));
                     }
                 }
+            }
+        }
+
+        private float GetCurrentDialogueTime()
+        {
+            return DialogueTime.mode == DialogueTime.TimeMode.Gameplay ? Time.time : Time.realtimeSinceStartup;
+        }
+
+        private int GetEntryIDFromTitle(string conversation, string entryTitle)
+        {
+            if (string.IsNullOrEmpty(conversation) || string.IsNullOrEmpty(entryTitle)) return -1;
+            var conversationAsset = DialogueManager.MasterDatabase.GetConversation(conversation);
+            if (conversationAsset == null) return -1;
+            var entry = conversationAsset.dialogueEntries.Find(x => string.Equals(x.Title, entryTitle));
+            if (entry == null) return -1;
+            return entry.id;
+        }
+
+        protected virtual void StopActiveConversation()
+        {
+            if (activeConversation != null && activeConversation.conversationController != null)
+            {
+                activeConversation.conversationController.Close();
+                activeConversation = null;
             }
         }
 
@@ -973,7 +1079,7 @@ namespace PixelCrushers.DialogueSystem
                 if (Vector3.Distance(myTransform.position, actor.position) > maxConversationDistance)
                 {
                     if (DialogueDebug.logInfo) Debug.Log(string.Format("{0}: Stopping conversation. Exceeded max distance {1} between {2} and {3}", new System.Object[] { DialogueDebug.Prefix, maxConversationDistance, name, actor.name }));
-                    DialogueManager.StopConversation();
+                    StopActiveConversation();
                     yield break;
                 }
             }
