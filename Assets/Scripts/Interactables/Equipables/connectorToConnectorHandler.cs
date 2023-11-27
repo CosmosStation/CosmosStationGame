@@ -33,8 +33,16 @@ namespace Interactables.Equipables
 
         private void HandleConnection()
         {
-            _interaction.DropEquipped();
-            _connector.Connect(_targetConnector);
+            bool isSameSex = _connector.ConnectionType == _targetConnector.ConnectionType;
+            if (!isSameSex)
+            {
+                _interaction.DropEquipped();
+                _connector.Connect(_targetConnector);
+            }
+            else
+            {
+                Debug.LogWarning("Same sex connection");
+            }
         }
     }
 }
