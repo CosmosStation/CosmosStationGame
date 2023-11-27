@@ -1,6 +1,7 @@
 using FMODUnity;
 using PixelCrushers.DialogueSystem.UnityGUI; // use it
 using UnityEngine;
+using Cinemachine;
 // #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 // #endif
@@ -48,6 +49,7 @@ namespace Player
 		public LayerMask GroundLayers;
 
 		[Header("Cinemachine")]
+		public CinemachineVirtualCamera VirtualCamera;
 		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
 		public GameObject CinemachineCameraTarget;
 		[Tooltip("How far in degrees can you move the camera up")]
@@ -211,9 +213,25 @@ namespace Player
 			Debug.Log("LockMovement" + _isMovementLocked);
 		}
 
-		public void FocusOnTarget()
-		{
+		public void LockPlayer()
+        {
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.Confined;
+			LockCamera();
+			LockMovement();
+		}
 
+		public void UnlockPlayer()
+		{
+			Cursor.visible = false;
+			Cursor.lockState = CursorLockMode.Locked;
+			UnlockCamera();
+			UnlockMovement();
+		}
+
+		public void FocusOnTarget(GameObject targetObject)
+		{
+			CinemachineCameraTarget.transform.LookAt(targetObject.transform);
 		}
 
 		private void Move()
