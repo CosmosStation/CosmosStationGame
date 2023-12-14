@@ -1,8 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b9ba46a8-38aa-454d-bb28-b4d9d1ab4499" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Equipables/connectorToConnectorHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Equipables/connectorToConnectorHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CosmosStationGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CosmosStationGame/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/Save System/Spawning/SpawnedObjectList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/Save System/Spawning/SpawnedObjectList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/Save System/Spawning/SpawnedObjectList.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/Save System/Spawning/SpawnedObjectList.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/UI/LocalizedFonts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/UI/LocalizedFonts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/UI/LocalizedFonts.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/UI/LocalizedFonts.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/UI/SetEventSystem.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/UI/SetEventSystem.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/UI/SetLocalizedFont.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Common/Wrappers/UI/SetLocalizedFont.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Data/Demo Database.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Data/Demo Database.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Prefabs/Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Prefabs/Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Prefabs/Sergeant Graves.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Prefabs/Sergeant Graves.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Prefabs/Terminal Dialogue UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Prefabs/Terminal Dialogue UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Prefabs/Terminal Dialogue UI.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Prefabs/Terminal Dialogue UI.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Scenes/DemoScene1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Scenes/DemoScene1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Scenes/New Input System/DemoInputControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Scenes/New Input System/DemoInputControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/Mobile/Button_3x1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/Mobile/Button_3x1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/Mobile/ScrollButton_3x1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/Mobile/ScrollButton_3x1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Button - Trimmed.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Button - Trimmed.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/SF Button.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/SF Button.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/SF Title.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/SF Title.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/SF Window.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/SF Window.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Slider 2.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Slider 2.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Button.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Button.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Check Mark.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Check Mark.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Edges.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Edges.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Flat.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Flat.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Inset.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Inset.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Selection.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Selection.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Window.psd.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Art/Textures/UnityUI/Unity - Window.psd.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Dialogue Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Dialogue Manager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Pro/Runic/Runic Standard Dialogue UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Pro/Runic/Runic Standard Dialogue UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Pro/Wheel/Wheel Standard UI Quest Log Window.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Pro/Wheel/Wheel Standard UI Quest Log Window.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Basic/Basic Standard Dialogue UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Basic/Basic Standard Dialogue UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Bubble/Bubble Template Standard Bark UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Bubble/Bubble Template Standard Bark UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Bubble/Bubble Template Standard UI Menu Panel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Bubble/Bubble Template Standard UI Menu Panel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Bubble/Bubble Template Standard UI Subtitle Panel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Bubble/Bubble Template Standard UI Subtitle Panel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Focus/Focus Template Standard Dialogue UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/Focus/Focus Template Standard Dialogue UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/VN/VN Template Standard Dialogue UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/VN/VN Template Standard Dialogue UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/WRPG/WRPG Template Standard Dialogue UI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Prefabs/Standard UI Prefabs/Templates/WRPG/WRPG Template Standard Dialogue UI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Scripts/Editor/Tools/Importers/Yarn/YarnConverter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Scripts/Editor/Tools/Importers/Yarn/YarnConverter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Scripts/Editor/Tools/Importers/Yarn/YarnConverterWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Scripts/Editor/Tools/Importers/Yarn/YarnConverterWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Scripts/Editor/Tools/Importers/Yarn/YarnProject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Scripts/Editor/Tools/Importers/Yarn/YarnProject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Wrappers/MVC/Actor/BarkGroupManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Wrappers/MVC/Actor/BarkGroupManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Wrappers/Save System/PersistentActiveDataMultiple.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Wrappers/Save System/PersistentActiveDataMultiple.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Wrappers/UI/Standard/Dialogue/BringSubtitlePanelToFrontOnFocus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Wrappers/UI/Standard/Dialogue/BringSubtitlePanelToFrontOnFocus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Wrappers/UI/Standard/Dialogue/BringSubtitlePanelToFrontOnFocus.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Pixel Crushers/Dialogue System/Wrappers/UI/Standard/Dialogue/BringSubtitlePanelToFrontOnFocus.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Custom Attribute Processors.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Custom Drawers.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Editor Windows.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Demos/Sample - RPG Editor.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EditorMods.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fmod_editor.log" beforeDir="false" afterPath="$PROJECT_DIR$/fmod_editor.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,26 +98,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Discover.Launch.Via.Unity": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "g/wires",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\George Dolganov\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\George Dolganov\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\George Dolganov\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\George Dolganov\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\George Dolganov\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\George Dolganov\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.5f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="G:\Program Files\Unity\Hub\Editor\2022.3.5f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\George Dolganov\Documents\GitHub\CosmosStationGame&quot; -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\George Dolganov\Documents\GitHub\CosmosStationGame" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="G:\Program Files\Unity\Hub\Editor\2022.3.5f1\Editor\Unity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;G:\Users\George Dolganov\Documents\GitHub\CosmosStationGame&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
+      <option name="WORKING_DIRECTORY" value="G:\Users\George Dolganov\Documents\GitHub\CosmosStationGame" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
@@ -154,17 +224,14 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Player/InteractionController.cs</url>
           <line>68</line>
-          <properties documentPath="G:\CosmosStationGame\Assets\Scripts\Player\InteractionController.cs" initialLine="68" containingFunctionPresentation="method 'ManageInteractable'">
-            <startOffsets>
-              <option value="2252" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2280" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="G:\CosmosStationGame\Assets\Scripts\Player\InteractionController.cs" initialLine="68" containingFunctionPresentation="method 'ManageInteractable'" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
