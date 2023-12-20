@@ -19,7 +19,10 @@ namespace Interactables
 
         public override void InteractStart(RaycastHit hit)
         {
-            PlayerController.FocusOnTarget(CinemachineTarget);
+            if (CinemachineTarget)
+            {
+                PlayerController.FocusOnTarget(CinemachineTarget);
+            }
             PlayerController.LockPlayer();
 
             dialogueTrigger = Actor.GetComponent<DialogueSystemTrigger>();
