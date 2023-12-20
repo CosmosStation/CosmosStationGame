@@ -9,21 +9,27 @@ public class PositionCamera : MonoBehaviour
     public Transform cameraPositionTarget;
     public GameObject camera;
 
-    private Transform _initialPosition;
+    private Vector3 _initialPosition;
 
     public void SetCameraPosition()
     {
         PlayerController.LockCamera();
         PlayerController.LockPlayer();
 
-        _initialPosition = camera.transform;
-        camera.transform.DOMove(cameraPositionTarget.position, 2, true);
+        _initialPosition = new Vector3(
+            camera.transform.position.x,
+            camera.transform.position.y,
+            camera.transform.position.z
+            );
+        Debug.Log(camera.transform.position);
+        Debug.Log(cameraPositionTarget.position);
+        camera.transform.DOMove(cameraPositionTarget.position, 2, false);
         camera.transform.DORotate(cameraPositionTarget.forward, 2);
     }
 
     public void ResetCameraPosition()
     {
-        camera.transform.DOMove(_initialPosition.position, 2, true);
+        camera.transform.DOMove(_initialPosition, 2, true);
         
         PlayerController.UnlockCamera();
         PlayerController.UnlockPlayer();

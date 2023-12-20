@@ -117,7 +117,7 @@ MonoBehaviour:
       type: 0
       typeString: 
     - title: Initial Value
-      value: True
+      value: False
       type: 2
       typeString: CustomFieldType_Boolean
     - title: Description
@@ -3323,8 +3323,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 388.46603}
-    canvasZoom: 1.03
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.97
   - id: 5
     fields:
     - title: Title
@@ -4210,6 +4210,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: 
+      - title: EventGuid
+        value: 4454cd2a-bbf7-400a-b0bd-928cfa2eae09
+        type: 0
+        typeString: 
       conversationID: 5
       isRoot: 0
       isGroup: 0
@@ -4226,12 +4230,12 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 117.34952
-        y: 657.602
+        y: 656.602
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 251.70584}
-    canvasZoom: 0.97
+    canvasScrollPosition: {x: 67.29405, y: 333.9274}
+    canvasZoom: 1
   syncInfo:
     syncActors: 0
     syncItems: 0

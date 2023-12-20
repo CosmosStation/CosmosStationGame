@@ -19,6 +19,7 @@ namespace Interactables
 
         public override void InteractStart(RaycastHit hit)
         {
+            Debug.Log("Hello");
             if (CinemachineTarget)
             {
                 PlayerController.FocusOnTarget(CinemachineTarget);
