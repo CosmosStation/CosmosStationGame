@@ -1,5 +1,6 @@
 using UnityEngine;
 using Interactables;
+using Interactables.Equipables;
 
 namespace Player
 {
