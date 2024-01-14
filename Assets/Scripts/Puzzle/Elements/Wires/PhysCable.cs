@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 
-namespace HPhysic
+namespace Wires
 {
     public class PhysicCable : MonoBehaviour
     {

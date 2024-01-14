@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9ba46a8-38aa-454d-bb28-b4d9d1ab4499" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/ConnectionChecker.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/ConnectionChecker.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CosmosStationGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CosmosStationGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/HDRPUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/HDRPUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Usage Examples/Wires.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Usage Examples/Wires.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Equipables/Handlers/connectorToConnectorHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Equipables/Handlers/connectorToConnectorHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Equipables/Wire.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Equipables/Wire.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/Connector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/Connector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/PhysCable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Puzzle/Elements/Wires/PhysCable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fmod_editor.log" beforeDir="false" afterPath="$PROJECT_DIR$/fmod_editor.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,6 +160,8 @@
       <workItem from="1700391711078" duration="1114000" />
       <workItem from="1702544549028" duration="603000" />
       <workItem from="1702900972394" duration="689000" />
+      <workItem from="1703183925797" duration="4246000" />
+      <workItem from="1705220217307" duration="1081000" />
     </task>
     <servers />
   </component>
@@ -180,7 +189,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Player/InteractionController.cs</url>
-          <line>68</line>
+          <line>69</line>
           <properties documentPath="G:\CosmosStationGame\Assets\Scripts\Player\InteractionController.cs" initialLine="68" containingFunctionPresentation="method 'ManageInteractable'" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>

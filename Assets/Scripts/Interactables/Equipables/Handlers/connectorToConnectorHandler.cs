@@ -1,6 +1,7 @@
 using System;
-using HPhysic;
+using Wires;
 using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using Utils;
 
@@ -33,8 +34,9 @@ namespace Interactables.Equipables
 
         private void HandleConnection()
         {
-            Debug.Log(_connector);
-            Debug.Log(_targetConnector);
+            Debug.Log("Handling connection");
+            Debug.Log(_connector.GameObject().name);
+            Debug.Log(_targetConnector.GameObject().name);
             bool isSameSex = _connector.ConnectionType == _targetConnector.ConnectionType;
             if (!isSameSex)
             {
