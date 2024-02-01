@@ -3,7 +3,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using Unity.VisualScripting;
 
-namespace HPhysic
+namespace Wires
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Connector : MonoBehaviour
